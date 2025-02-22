@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="options.js"></script>
+    <style>
+    /* Global styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    width: 450px;
+    padding: 15px;
+    background: linear-gradient(to right, #f8f9fa, #e3e7ec);
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- CLASSY TABS --- */
+.tab {
+    display: flex;
+    justify-content: space-around;
+    background: white;
+    padding: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tab button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+    border-bottom: 3px solid transparent;
+}
+
+.tab button:hover {
+    color: #007bff;
+    border-bottom: 3px solid #007bff;
+}
+
+.tab button.active {
+    color: #ffffff;
+    background: linear-gradient(to right, #007bff, #0056b3);
+    border-radius: 8px;
+    padding: 14px 25px;
+}
+
+/* --- CLASSY SWITCHES --- */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 55px;
+    height: 30px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: #ccc;
+    transition: all 0.4s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    content: "";
+    position: absolute;
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background: white;
+    transition: all 0.4s;
+    border-radius: 50%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+input:checked + .slider {
+    background: linear-gradient(to right, #007bff, #0056b3);
+}
+
+input:checked + .slider:before {
+    transform: translateX(25px);
+}
+
+/* --- CLASSY TOGGLE BUTTON --- */
+.toggle {
+    display: inline-block;
+    width: 140px;
+    height: 45px;
+    background: linear-gradient(to right, #007bff, #0056b3);
+    color: white;
+    border-radius: 25px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 45px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent;
+}
+
+.toggle:hover {
+    background: linear-gradient(to right, #0056b3, #004099);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.toggle--on:after {
+    content: "Bias";
+}
+
+.toggle--off:after {
+    content: "Accuracy";
+}
+
+/* --- LABELS --- */
+.label-center {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    margin-left: 10px;
+    position: relative;
+    top: -5px;
+}
+
+    </style>
+  </head>
+  <body>
+   <!-- Classy Tab Navigation -->
+<div class="tab">
+  <button id='summary-btn' class="tablinks active">Summary</button>
+  <button id='opts-btn' class="tablinks">Options</button>
+</div>
+
+<!-- Tab Content -->
+<div id="summary" class="tabcontent" style="display: block">
+  <h1 style="color: #333;"><b>BIAS:</b> <span class="nobr" id="bias-title">Loading...</span></h1>
+  <p id="bias-summary">Please close and reopen this menu in a few seconds.</p>
+
+  <h1 style="color: #333;"><b>ACCURACY:</b> <span class="nobr" id="acc-rating">Loading...</span></h1>
+  <p><a href="https://mediabiasfactcheck.com/" target="_blank">For more details, click here</a></p>
+</div>
+
+<div id="options" class="tabcontent">
+  <form id="fallacy-options">
+      <h1>Badge Display</h1>
+      <a href="#" class="toggle toggle--on"></a>
+      <input type="checkbox" id="badge-bias">
+
+      <h1>Activate Fallacy for:</h1>
+
+      <label class="switch">
+          <input type="checkbox" id="facebook">
+          <span class="slider"></span>
+      </label> 
+      <b class="label-center">Facebook</b><br><br>
+
+      <label class="switch">
+          <input type="checkbox" id="reddit">
+          <span class="slider"></span>
+      </label> 
+      <b class="label-center">Reddit</b><br><br>
+
+      <label class="switch">
+          <input type="checkbox" id="google">
+          <span class="slider"></span>
+      </label> 
+      <b class="label-center">Google</b><br><br>
+
+      <label class="switch">
+          <input type="checkbox" id="bluesky">
+          <span class="slider"></span>
+      </label> 
+      <b class="label-center">Bluesky</b><br><br>
+
+      <label class="switch">
+          <input type="checkbox" id="threads">
+          <span class="slider"></span>
+      </label> 
+      <b class="label-center">Threads</b><br><br>
+
+      <label class="switch">
+          <input type="checkbox" id="ddg">
+          <span class="slider"></span>
+      </label> 
+      <b class="label-center">DuckDuckGo</b>
+  </form>
+</div>
+
+  </body>
+</html>

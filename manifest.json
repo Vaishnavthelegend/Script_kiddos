@@ -1,0 +1,63 @@
+{
+  "manifest_version": 3,
+  "name": "Fallacy",
+  "version": "5.3.0",
+
+  "description": "Applies decals to Facebook, Bluesky, Threads, Google, Reddit, and DuckDuckGo showing bias and acc data from mediabiasfactcheck.com",
+
+  "icons": {
+    "48": "icons/fallacy-48.png",
+    "96": "icons/fallacy-96.png",
+    "128": "icons/fallacy-96-128.png"
+  },
+
+  "action": {
+    "default_icon": "icons/fallacy-38.png",
+    "default_popup": "options.html"
+  },
+
+  "web_accessible_resources": [{
+    "resources": ["sources/sources.json"],
+      "matches": ["<all_urls>"]
+  }],
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.reddit.com/*"],
+      "js": ["fallacy-r.js"]
+    },
+    { 
+      "matches": ["*://*.facebook.com/*"],
+      "js": ["fallacy-fb.js"]
+    },
+    {
+      "matches": ["*://*.google.com/*"],
+      "js": ["fallacy-g.js"]
+    },
+    {
+      "matches": ["*://*.bsky.app/*"],
+      "js": ["fallacy-bs.js"]
+    },
+    {
+      "matches": ["*://*.threads.net/*"],
+      "js": ["fallacy-t.js"]
+    },{
+      "matches": ["*://*.duckduckgo.com/*"],
+      "js": ["fallacy-ddg.js"]
+    },{
+      "matches": ["http://*/*", "https://*/*"],
+      "exclude_matches": ["*://*.reddit.com/*", "*://*.facebook.com/*", "*://*.google.com/*", "*://*.duckduckgo.com/*", "*://*.bsky.app/*", "*://*.threads.net/*"],
+      "js": ["fallacy-other.js"]
+    }
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "options_ui": {
+    "page": "options.html"
+  },
+
+  "permissions": ["storage"]
+}
